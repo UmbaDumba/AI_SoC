@@ -1,8 +1,10 @@
-if [-z $@]; then
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
     git add .
 fi
 
-if [-n $@]; then
+if [ $# -ne 0 ]; then
     git add $@
 fi
 
