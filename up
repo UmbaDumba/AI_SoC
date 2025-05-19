@@ -1,3 +1,12 @@
-git add .
+
+
+if [ $# -eq 0 ]; then
+    git add .
+fi
+
+if [ $# -ne 0 ]; then
+    git add $@
+fi
+
 git commit -m "linux"
 git push
