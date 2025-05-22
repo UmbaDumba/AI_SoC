@@ -21,7 +21,7 @@ height = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 #fps = cap.get(cv2.CAP_PROP_FPS) * 2  # 영상 재생속도 2배
 fps = 30
 
-out = cv2.VideoWriter('output.avi', fourcc, fps, (width, height))
+# out = cv2.VideoWriter('output.avi', fourcc, fps, (width, height))
 # 파일 저장명, 코덱, FPS, 크기(width, height)
 
 is_record = False
@@ -39,12 +39,14 @@ if cap.isOpened():                      # 캡쳐 객체 연결 확인
                 r = model(frame)
                 r_points = r.pandas().xyxy[0].to_numpy()
                 for p in r_points:
+                    #print(p[6])
                     if p[6] == 'person':
                         is_record = True
+                        out = cv2.VideoWriter('output.avi', fourcc, fps, (width, height))
             
             cv2.imshow(title, frame)
 
-            if is_record:
+            if is_record == True:
                 out.write(frame)  
         else:
             print('no frame')
