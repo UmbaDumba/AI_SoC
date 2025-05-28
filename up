@@ -1,4 +1,4 @@
-
+git pull
 
 if [ $# -eq 0 ]; then
     git add .
